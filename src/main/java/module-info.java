@@ -10,6 +10,8 @@ module org.example.expensetracker {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires mysql.connector.j;
 
     opens org.example.expensetracker to javafx.fxml;
     exports org.example.expensetracker;

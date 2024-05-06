@@ -1,0 +1,28 @@
+#AnchorRoot{
+
+    -fx-background-color: #F8F8FF;
+
+}
+.Side{
+         -fx-background-color: #708090;
+         -fx-border-width: 50px 50px 50px 50px;
+         -fx-background-radius: 80px;
+
+}
+.LoginButton{
+         -fx-border-width: 20px 20px 20px 20px;
+         -fx-background-radius: 30px;
+         -fx-background-color: #ff7213;
+}
+.Email_and_pass_field{
+        -fx-border-width: 20px 20px 20px 20px;
+        -fx-background-radius: 30px;
+}
+.EyeButton{
+        -fx-background-color: #FDFDFD;
+}
+.Signup_Button{
+        -fx-background-color: #F8F8FF;
+        -fx-border-width: 20px 20px 20px 20px;
+        -fx-background-radius: 80px;
+}
