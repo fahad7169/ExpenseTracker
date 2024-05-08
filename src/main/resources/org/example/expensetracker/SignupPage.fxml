@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorRoot" prefHeight="650.0" prefWidth="700.0" stylesheets="@Login_Page.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.Signup_PageController">
+    <children>
+        <Label layoutX="131.0" layoutY="79.0" text="Get Started Here">
+            <font>
+                <Font name="Arial Bold" size="59.0" />
+            </font>
+        </Label>
+        <Label layoutX="185.0" layoutY="163.0" text="Let's Begin! Create Your Account">
+            <font>
+                <Font name="Arial" size="25.0" />
+            </font>
+        </Label>
+        <TextField layoutX="173.0" layoutY="219.0" opacity="0.48" prefHeight="51.0" prefWidth="381.0" promptText="Email Address" styleClass="Email_and_pass_field">
+            <font>
+                <Font name="Arial" size="24.0" />
+            </font>
+        </TextField>
+        <PasswordField layoutX="173.0" layoutY="303.0" opacity="0.48" prefHeight="51.0" prefWidth="381.0" promptText="Password" styleClass="Email_and_pass_field">
+            <font>
+                <Font name="Arial" size="24.0" />
+            </font>
+        </PasswordField>
+        <Button layoutX="174.0" layoutY="458.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="381.0" styleClass="LoginButton" text="Signup" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="29.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Label layoutX="260.0" layoutY="524.0" prefHeight="35.0" prefWidth="186.0" text="Already have an account? ">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Button fx:id="loginButton" layoutX="439.0" layoutY="524.0" mnemonicParsing="false" onAction="#loginScene" scaleShape="false" styleClass="Signup_Button" text="Login" textFill="#ff7213">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+      <PasswordField layoutX="173.0" layoutY="382.0" opacity="0.48" prefHeight="51.0" prefWidth="381.0" promptText="Confrim Password" styleClass="Email_and_pass_field">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </PasswordField>
+
+    </children>
+</AnchorPane>

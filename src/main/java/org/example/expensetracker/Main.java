@@ -10,11 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("Login_SignupPage.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("LoginPage.fxml"));
         Parent root=fxmlLoader.load();
 
         Scene scene=new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
