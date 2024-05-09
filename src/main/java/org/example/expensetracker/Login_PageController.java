@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,12 +45,22 @@ public class Login_PageController implements Initializable {
     }
     private void showHideIcon(){
 
-        Image show=new Image("/icons8-show-password-90.png");
-        Image hide=new Image("/icons8-hide-100.png");
+        Image show=new Image("/eye (3).png");
+        Image hide=new Image("/eye (4).png");
         if (showPass){
-            eye.setImage(show);
-            String temp=passField.getText();
-            textField=new TextField(temp);
+            eye.setImage(hide);
+            String temp=null;
+            try {
+                temp=passField.getText();
+            }
+            catch (Exception ignored){
+
+            }
+
+            textField=new TextField();
+            if (temp!=null){
+                textField.setText(temp);
+            }
             AnchorRoot.getChildren().remove(passField);
             textField.setPromptText("Password");
             textField.setOpacity(0.48);
@@ -62,12 +71,23 @@ public class Login_PageController implements Initializable {
             textField.setFont(Font.font("Arial",24));
             Platform.runLater(textField::toBack);
             AnchorRoot.getChildren().add(textField);
+//            System.out.println(count);
         }
         else{
             if (count>=1){
-                eye.setImage(hide);
+                eye.setImage(show);
                 Platform.runLater(()->{
-                    passField.setText(textField.getText());
+                    String t=null;
+                    try {
+                        t=textField.getText();
+                    }
+                    catch (Exception ignored) {
+
+                    }
+                    if (t!=null){
+                        passField.setText(t);
+                    }
+
                     AnchorRoot.getChildren().remove(textField);
                     AnchorRoot.getChildren().add(passField);
                 });
@@ -77,6 +97,7 @@ public class Login_PageController implements Initializable {
         }
         count++;
         showPass=!showPass;
+
 
 
 

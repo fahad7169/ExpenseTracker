@@ -21,6 +21,7 @@
 }
 .EyeButton{
         -fx-background-color: #FDFDFD;
+        -fx-background-radius: 30px;
 }
 .Signup_Button{
         -fx-background-color: #F8F8FF;

@@ -1,0 +1,36 @@
+.AnchorRoot{
+   -fx-background-color: #f1f8ff;
+}
+.LeftPane{
+             -fx-background-color: white;
+              -fx-border-width: 2px 2px 2px 2px;
+              -fx-border-style: solid;
+              -fx-border-color: #cccccc;
+}
+.TitlePane{
+    -fx-background-color: #f2f2f2;
+}
+.WalletPane{
+       -fx-background-color: #f2f2f2;
+       -fx-border-width: 2px 2px 2px 2px;
+       -fx-border-style: solid;
+       -fx-border-color: #d9d9d9;
+       -fx-border-radius: 10px;
+
+}
+.MainButtons{
+
+        -fx-background-color: white;
+        -fx-background-radius: 20px;
+
+}
+.MainButtons: hover{
+        -fx-background-color: #f2f2f2;
+}
+.RemainingPanes{
+     -fx-background-color: white;
+     -fx-background-radius: 10px;
+     -fx-border-radius: 10px;
+     -fx-border-color: #e6e6e6;
+     -fx-border-style: solid;
+}

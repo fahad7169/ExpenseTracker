@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorRoot" prefHeight="650.0" prefWidth="700.0" stylesheets="@Login_Page.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.Login_PageController">
+<AnchorPane fx:id="AnchorRoot" prefHeight="650.0" prefWidth="700.0" stylesheets="@Login_Page.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.Login_PageController">
     <children>
         <Label layoutX="135.0" layoutY="79.0" text="Welcome Back">
             <font>
@@ -40,11 +40,11 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-      <Button fx:id="showHideButton" contentDisplay="GRAPHIC_ONLY" layoutX="475.0" layoutY="316.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="26.0" styleClass="EyeButton">
+      <Button fx:id="showHideButton" contentDisplay="GRAPHIC_ONLY" layoutX="471.0" layoutY="317.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" styleClass="EyeButton">
          <graphic>
-            <ImageView fx:id="eye" fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="eye" fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../icons8-hide-100.png" />
+                  <Image url="@../../../eye%20(3).png" />
                </image>
             </ImageView>
          </graphic>

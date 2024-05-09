@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Many Parts of Login page are ready">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Signup_PageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/SignupPage.fxml" afterDir="false" />
+    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Added all necessary functionalities in the login and signup page Database is remaining">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/eye (3).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/eye (4).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/profile (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/spending.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/wallet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons8-hide-100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icons8-show-password-90.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/Login_Page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/Login_Page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/icons8-hide-100.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons8-hide-100.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/icons8-show-password-90.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons8-show-password-90.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,26 +58,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/fahad/Documents/mysql-connector-j-8.3.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Fahad ali/Semester II/Java/JavaFX/ExpenseTracker/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Fahad ali\Semester II\Java\JavaFX\ExpenseTracker\src\main\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Fahad ali\Semester II\Java\JavaFX\ExpenseTracker\src\main\resources" />
       <recent name="E:\Fahad ali\Semester II\Java\JavaFX\ExpenseTracker\src\main\resources\org\example\expensetracker" />
@@ -122,13 +131,22 @@
       <option name="project" value="LOCAL" />
       <updated>1715013952082</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added all necessary functionalities in the login and signup page Database is remaining">
+      <option name="closed" value="true" />
+      <created>1715189093815</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715189093815</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Started this expense tracker project" />
     <MESSAGE value="Many Parts of Login page are ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="Many Parts of Login page are ready" />
+    <MESSAGE value="Added all necessary functionalities in the login and signup page Database is remaining" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all necessary functionalities in the login and signup page Database is remaining" />
   </component>
 </project>
