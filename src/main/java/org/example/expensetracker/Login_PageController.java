@@ -1,6 +1,6 @@
 package org.example.expensetracker;
 
-import com.mysql.cj.jdbc.Driver;
+
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -168,9 +168,11 @@ public class Login_PageController implements Initializable {
                     }
                 }
                 else{
-                   checkLabel.setText("*Your email doesn't exist in our database");
+                   checkLabel.setText("*Your Account doesn't exist in our database");
                 }
 
+              statement.close();
+                connection.close();
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -196,7 +198,7 @@ public class Login_PageController implements Initializable {
                 Parent root=fxmlLoader.load();
 
                 DashboardPageController dashboardPageController=fxmlLoader.getController();
-                dashboardPageController.getUserId(userId);
+                dashboardPageController.setUserID(userId);
 
                 Scene scene=new Scene(root);
                 Stage stage=(Stage) ((Node) ev.getSource()).getScene().getWindow();

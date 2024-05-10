@@ -76,8 +76,8 @@
          </Label>
          <Pane layoutX="778.0" layoutY="35.0" prefHeight="34.0" prefWidth="280.0" styleClass="RemainingPanes">
             <children>
-               <DatePicker layoutX="152.0" layoutY="4.0" prefHeight="25.0" prefWidth="123.0" />
-               <DatePicker layoutX="5.0" layoutY="4.0" prefHeight="25.0" prefWidth="123.0" />
+               <DatePicker fx:id="endDate" layoutX="152.0" layoutY="4.0" prefHeight="25.0" prefWidth="123.0" />
+               <DatePicker fx:id="startDate" layoutX="5.0" layoutY="4.0" prefHeight="25.0" prefWidth="123.0" />
                <Label layoutX="134.0" layoutY="-4.0" text="-">
                   <font>
                      <Font size="26.0" />
@@ -87,7 +87,7 @@
          </Pane>
          <Pane layoutX="181.0" layoutY="116.0" prefHeight="90.0" prefWidth="196.0" styleClass="RemainingPanes">
             <children>
-               <Label layoutX="76.0" layoutY="9.0" text="\$0" textFill="#4d80f3">
+               <Label fx:id="incomeLabel" layoutX="47.0" layoutY="9.0" text="\$0" textFill="#4d80f3">
                   <font>
                      <Font size="33.0" />
                   </font>
@@ -106,7 +106,7 @@
                      <Font size="18.0" />
                   </font>
                </Label>
-               <Label layoutX="74.0" layoutY="9.0" text="\$0" textFill="#fb7aa6">
+               <Label fx:id="expenseLabel" layoutX="51.0" layoutY="9.0" text="\$0" textFill="#fb7aa6">
                   <font>
                      <Font size="33.0" />
                   </font>
@@ -120,7 +120,7 @@
                      <Font size="18.0" />
                   </font>
                </Label>
-               <Label layoutX="68.0" layoutY="9.0" text="\$0" textFill="#81c868">
+               <Label fx:id="balanceLabel" layoutX="48.0" layoutY="9.0" text="\$0" textFill="#81c868">
                   <font>
                      <Font size="33.0" />
                   </font>
@@ -134,7 +134,7 @@
                      <Font size="18.0" />
                   </font>
                </Label>
-               <Label layoutX="78.0" layoutY="9.0" text="0" textFill="#34d3eb">
+               <Label fx:id="transactionsLabel" layoutX="65.0" layoutY="9.0" text="0" textFill="#34d3eb">
                   <font>
                      <Font size="33.0" />
                   </font>
@@ -143,15 +143,15 @@
          </Pane>
          <Pane layoutX="181.0" layoutY="233.0" prefHeight="416.0" prefWidth="879.0" styleClass="RemainingPanes">
             <children>
-               <PieChart fx:id="pieStastics" layoutX="63.0" layoutY="91.0" prefHeight="272.0" prefWidth="326.0" />
+               <PieChart fx:id="pieStastics" layoutX="92.0" layoutY="59.0" prefHeight="347.0" prefWidth="724.0" />
                <Label layoutX="24.0" layoutY="19.0" text="Total Expenses" textFill="#615c5c">
                   <font>
                      <Font name="Arial Bold" size="18.0" />
                   </font>
                </Label>
-               <Label layoutX="29.0" layoutY="46.0" text="Jun 1- Nov 30" textFill="#615c5c">
+               <Label fx:id="pieChartDate" layoutX="38.0" layoutY="46.0" text="Jun 1- Nov 30" textFill="#615c5c">
                   <font>
-                     <Font name="Arial" size="18.0" />
+                     <Font name="Arial" size="14.0" />
                   </font>
                </Label>
             </children>
