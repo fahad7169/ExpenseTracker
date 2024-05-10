@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Added all necessary functionalities in the login and signup page Database is remaining">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/eye (3).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/eye (4).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/profile (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spending.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/wallet.png" afterDir="false" />
+    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Almost all design of main page is ready">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/TransactionsPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/delete (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/TransactionsPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icons8-hide-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icons8-show-password-90.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Signup_PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Signup_PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/Login_Page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/Login_Page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/SignupPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/SignupPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715189093815</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Almost all design of main page is ready">
+      <option name="closed" value="true" />
+      <created>1715276051590</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715276051590</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +152,7 @@
     <MESSAGE value="Started this expense tracker project" />
     <MESSAGE value="Many Parts of Login page are ready" />
     <MESSAGE value="Added all necessary functionalities in the login and signup page Database is remaining" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all necessary functionalities in the login and signup page Database is remaining" />
+    <MESSAGE value="Almost all design of main page is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost all design of main page is ready" />
   </component>
 </project>

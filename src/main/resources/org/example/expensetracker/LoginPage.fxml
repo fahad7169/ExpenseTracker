@@ -22,7 +22,7 @@
                 <Font name="Arial" size="25.0" />
             </font>
         </Label>
-        <TextField layoutX="153.0" layoutY="219.0" opacity="0.48" prefHeight="51.0" prefWidth="381.0" promptText="Email Address" styleClass="Email_and_pass_field">
+        <TextField fx:id="emailField" layoutX="153.0" layoutY="219.0" opacity="0.48" prefHeight="51.0" prefWidth="381.0" promptText="Email Address" styleClass="Email_and_pass_field">
             <font>
                 <Font name="Arial" size="24.0" />
             </font>
@@ -32,7 +32,7 @@
                 <Font name="Arial" size="24.0" />
             </font>
         </PasswordField>
-        <Button layoutX="154.0" layoutY="398.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="381.0" styleClass="LoginButton" text="Login" textFill="WHITE">
+        <Button layoutX="154.0" layoutY="398.0" mnemonicParsing="false" onAction="#Login" prefHeight="51.0" prefWidth="381.0" styleClass="LoginButton" text="Login" textFill="WHITE">
             <font>
                 <Font name="Arial Bold" size="29.0" />
             </font>
@@ -65,6 +65,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="checkLabel" layoutX="171.0" layoutY="369.0" prefHeight="22.0" prefWidth="322.0" textFill="#ff2a2a" />
 
     </children>
 </AnchorPane>

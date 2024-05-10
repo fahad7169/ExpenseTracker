@@ -34,3 +34,16 @@
      -fx-border-color: #e6e6e6;
      -fx-border-style: solid;
 }
+.AddTransaction{
+     -fx-background-color: #507EFA;
+}
+.EditDeleteButton: hover{
+
+      -fx-background-color: #f2f2f2;
+}
+.TableColumn{
+        -fx-font-size: 20px;
+        -fx-text-alignment: centre;
+        -fx-text-alignment: Arial;
+        -fx-color: white;
+}

@@ -1,5 +1,7 @@
 package org.example.expensetracker;
 
+import com.mysql.cj.jdbc.Driver;
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,16 +10,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Login_PageController implements Initializable {
@@ -25,9 +30,11 @@ public class Login_PageController implements Initializable {
     @FXML private ImageView eye;
     @FXML private PasswordField passField;
     @FXML private Button showHideButton;
+    @FXML private TextField emailField;
+    @FXML private Label checkLabel;
     boolean showPass=false;
     private int count;
-    TextField textField;
+    private TextField textField;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(()->{
@@ -101,6 +108,8 @@ public class Login_PageController implements Initializable {
 
 
 
+
+
     }
     public void signupScene(ActionEvent event) throws Exception{
 
@@ -112,6 +121,97 @@ public class Login_PageController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
+    }
+    public void Login(ActionEvent event){
+
+        String email=null;
+        String pass=null;
+        try {
+            email=emailField.getText();
+            if (showPass){
+                pass=passField.getText();
+//                System.out.println(pass);
+
+            }
+            else {
+
+                pass=textField.getText();
+//                System.out.println(pass);
+            }
+        }
+        catch (Exception ignored){
+
+        }
+        if (email!=null && pass!=null){
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                String url="jdbc:mysql://localhost:3306/users";
+                String username="root";
+                String password="";
+                Connection connection= DriverManager.getConnection(url,username,password);
+
+                String query="SELECT * FROM userslogininfo " + "WHERE email='"+email+"'";
+                Statement statement= connection.createStatement();
+                ResultSet resultSet=statement.executeQuery(query);
+                if (resultSet.next()){
+                    int userId=resultSet.getInt(1);
+                    String databaseEmail=resultSet.getString(2);
+                    String databasePass=resultSet.getString(3);
+                    if (databaseEmail.equals(email) && databasePass.equals(pass)){
+                        checkLabel.setVisible(false);
+                        openMainPage(userId,event);
+                    }
+                    else {
+                        checkLabel.setText("*Your email and password doesn't match");
+                    }
+                }
+                else{
+                   checkLabel.setText("*Your email doesn't exist in our database");
+                }
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+
+    }
+    private void openMainPage(int userId, ActionEvent ev) throws Exception{
+
+
+        FadeTransition fadeout=new FadeTransition(Duration.seconds(0.2),AnchorRoot);
+        fadeout.setFromValue(1.0);
+        fadeout.setToValue(0.0);
+
+        fadeout.setOnFinished(event -> {
+
+            try {
+                FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("DashboardPage.fxml"));
+                Parent root=fxmlLoader.load();
+
+                DashboardPageController dashboardPageController=fxmlLoader.getController();
+                dashboardPageController.getUserId(userId);
+
+                Scene scene=new Scene(root);
+                Stage stage=(Stage) ((Node) ev.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+        });
+        fadeout.play();
+
 
     }
 
