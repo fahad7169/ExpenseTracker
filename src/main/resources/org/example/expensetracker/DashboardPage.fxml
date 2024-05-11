@@ -16,11 +16,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane layoutX="1.0" layoutY="1.0" prefHeight="1000.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.DashboardPageController">
+<ScrollPane hmax="2.0" layoutX="1.0" layoutY="1.0" prefHeight="1000.0" prefWidth="1080.0" vmax="2.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.DashboardPageController">
 <content>
-   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1149.0" prefWidth="1088.0" styleClass="AnchorRoot" stylesheets="@DashboardPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1088.0" styleClass="AnchorRoot" stylesheets="@DashboardPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
       <children>
-         <Pane layoutX="1.0" layoutY="1.0" prefHeight="1149.0" prefWidth="163.0" styleClass="LeftPane">
+         <Pane layoutX="1.0" layoutY="1.0" prefHeight="1100.0" prefWidth="163.0" styleClass="LeftPane">
             <children>
                <Pane layoutX="3.0" layoutY="3.0" prefHeight="80.0" prefWidth="157.0" styleClass="TitlePane">
                   <children>
@@ -38,7 +38,7 @@
                </ImageView>
                <Pane layoutX="15.0" layoutY="368.0" prefHeight="59.0" prefWidth="135.0" styleClass="WalletPane">
                   <children>
-                     <Label layoutX="80.0" layoutY="20.0" text="\$0">
+                     <Label fx:id="sideBalanceLabel" layoutX="70.0" layoutY="17.0" text="\$0">
                         <font>
                            <Font size="18.0" />
                         </font>
@@ -143,7 +143,7 @@
          </Pane>
          <Pane layoutX="181.0" layoutY="233.0" prefHeight="416.0" prefWidth="879.0" styleClass="RemainingPanes">
             <children>
-               <PieChart fx:id="pieStastics" layoutX="92.0" layoutY="59.0" prefHeight="347.0" prefWidth="724.0" />
+               <PieChart fx:id="pieStastics" layoutX="126.0" layoutY="38.0" prefHeight="347.0" prefWidth="724.0" />
                <Label layoutX="24.0" layoutY="19.0" text="Total Expenses" textFill="#615c5c">
                   <font>
                      <Font name="Arial Bold" size="18.0" />
@@ -156,36 +156,36 @@
                </Label>
             </children>
          </Pane>
-         <Pane layoutX="181.0" layoutY="668.0" prefHeight="450.0" prefWidth="446.0" styleClass="RemainingPanes">
+         <Pane layoutX="181.0" layoutY="668.0" prefHeight="398.0" prefWidth="446.0" styleClass="RemainingPanes">
             <children>
                <Label layoutX="24.0" layoutY="26.0" text="Account - Balance" textFill="#615c5c">
                   <font>
                      <Font name="Arial Bold" size="18.0" />
                   </font>
                </Label>
-               <AreaChart layoutX="37.0" layoutY="76.0" prefHeight="315.0" prefWidth="391.0">
+               <AreaChart fx:id="balanceChart" layoutX="-9.0" layoutY="48.0" prefHeight="355.0" prefWidth="452.0">
                   <xAxis>
-                     <CategoryAxis side="BOTTOM" />
+                     <CategoryAxis side="BOTTOM" fx:id="xAxisBalance" />
                   </xAxis>
                   <yAxis>
-                     <NumberAxis side="LEFT" />
+                     <NumberAxis fx:id="yAxisBalance" side="LEFT" />
                   </yAxis>
                </AreaChart>
             </children>
          </Pane>
-         <Pane layoutX="637.0" layoutY="668.0" prefHeight="450.0" prefWidth="422.0" styleClass="RemainingPanes">
+         <Pane layoutX="637.0" layoutY="668.0" prefHeight="398.0" prefWidth="422.0" styleClass="RemainingPanes">
             <children>
                <Label layoutX="24.0" layoutY="26.0" text="Income - Expense" textFill="#615c5c">
                   <font>
                      <Font name="Arial" size="18.0" />
                   </font>
                </Label>
-               <BarChart barGap="1.0" categoryGap="100.0" layoutX="20.0" layoutY="83.0" prefHeight="315.0" prefWidth="391.0">
+               <BarChart fx:id="incomeExpenseChart" barGap="1.0" categoryGap="100.0" layoutX="-10.0" layoutY="45.0" prefHeight="355.0" prefWidth="432.0">
                   <xAxis>
-                     <CategoryAxis side="BOTTOM" />
+                     <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                   </xAxis>
                   <yAxis>
-                     <NumberAxis side="LEFT">
+                     <NumberAxis fx:id="yAxis" side="LEFT">
                         <tickLabelFont>
                            <Font name="Arial" size="10.0" />
                         </tickLabelFont>
