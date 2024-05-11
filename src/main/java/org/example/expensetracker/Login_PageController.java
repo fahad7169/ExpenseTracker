@@ -187,11 +187,7 @@ public class Login_PageController implements Initializable {
     private void openMainPage(int userId, ActionEvent ev) throws Exception{
 
 
-        FadeTransition fadeout=new FadeTransition(Duration.seconds(0.2),AnchorRoot);
-        fadeout.setFromValue(1.0);
-        fadeout.setToValue(0.0);
 
-        fadeout.setOnFinished(event -> {
 
             try {
                 FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("DashboardPage.fxml"));
@@ -209,10 +205,6 @@ public class Login_PageController implements Initializable {
                 e.printStackTrace();
             }
 
-
-
-        });
-        fadeout.play();
 
 
     }

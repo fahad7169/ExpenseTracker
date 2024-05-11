@@ -1,18 +1,29 @@
 package org.example.expensetracker;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import kotlin.jvm.internal.PackageReference;
 
 import java.net.URL;
 import java.sql.*;
@@ -29,6 +40,8 @@ public class DashboardPageController implements Initializable {
     @FXML private CategoryAxis xAxis;
     @FXML private NumberAxis yAxis;
     @FXML private AreaChart<String, Number> balanceChart;
+    @FXML private Button transactionButton;
+    @FXML private AnchorPane AnchorRoot;
 
 
 
@@ -64,6 +77,16 @@ public class DashboardPageController implements Initializable {
         setBarChart();
         setAreaChart();
 
+        Platform.runLater(()->{
+            AnchorRoot.getScene().getRoot().requestFocus();
+            AnchorRoot.setOnMouseClicked(event -> {
+                transactionButton.getParent().requestFocus();
+            });
+
+        });
+        transactionButton.setOnAction(event -> {
+            transactionScene(balanceAmount,event,userID);
+        });
 
 
 
@@ -422,12 +445,44 @@ public class DashboardPageController implements Initializable {
                       }
                       balanceChart.getData().add(amountSeries);
 
+                      incomeStatement.close();
+                      expenseStatement.close();
+                      connection.close();
 
                   }
                   catch (Exception e){
 
                   }
               });
+    }
+    private void transactionScene(int balanceAmount, ActionEvent event,int userID){
+
+
+
+            try {
+
+                FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("TransactionsPage.fxml"));
+                Parent root=fxmlLoader.load();
+
+                TransactionsPageController transactionsPageController=fxmlLoader.getController();
+                transactionsPageController.setValues(balanceAmount,userID);
+
+                Scene scene=new Scene(root);
+                Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+
+
+
+
+            }
+            catch (Exception e){
+                   e.printStackTrace();
+            }
+
+
+
+
     }
 
 }

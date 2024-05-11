@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Connected database to many parts of the dashboard page">
+    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Dashboard is completely ready">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DashboardPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/Login_PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/TransactionsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/TransactionsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/DashboardPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/LoginPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/SignupPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/SignupPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/TransactionsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/TransactionsPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -152,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715363005182</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Dashboard is completely ready">
+      <option name="closed" value="true" />
+      <created>1715408404563</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715408404563</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,6 +179,7 @@
     <MESSAGE value="Almost all design of main page is ready" />
     <MESSAGE value="Login and signup pages are connected with database now" />
     <MESSAGE value="Connected database to many parts of the dashboard page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connected database to many parts of the dashboard page" />
+    <MESSAGE value="Dashboard is completely ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dashboard is completely ready" />
   </component>
 </project>

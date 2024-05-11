@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hmax="2.0" layoutX="1.0" layoutY="1.0" prefHeight="1000.0" prefWidth="1080.0" vmax="2.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.DashboardPageController">
+<ScrollPane hmax="2.0" layoutX="1.0" layoutY="1.0" prefHeight="1000.0" prefWidth="1080.0" vmax="2.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.DashboardPageController">
 <content>
-   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1088.0" styleClass="AnchorRoot" stylesheets="@DashboardPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="AnchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1130.0" prefWidth="1088.0" styleClass="AnchorRoot" stylesheets="@DashboardPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
       <children>
          <Pane layoutX="1.0" layoutY="1.0" prefHeight="1100.0" prefWidth="163.0" styleClass="LeftPane">
             <children>
@@ -57,7 +57,7 @@
                      <Font name="Arial" size="18.0" />
                   </font>
                </Button>
-               <Button layoutX="15.0" layoutY="628.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="143.0" styleClass="MainButtons" text="Transactions">
+               <Button fx:id="transactionButton" layoutX="15.0" layoutY="628.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="143.0" styleClass="MainButtons" text="Transactions">
                   <font>
                      <Font name="Arial" size="18.0" />
                   </font>
