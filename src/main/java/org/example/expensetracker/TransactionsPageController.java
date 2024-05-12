@@ -19,6 +19,7 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -35,8 +36,14 @@ public class TransactionsPageController implements Initializable {
     private int userID;
     private ObservableList<Transaction> alltransactions;
     private final int itemsPerPage = 13;
+
+    private final ObservableList<String> incomeCategoryList=FXCollections.observableArrayList
+            ("Salary","Interests","Business","Extra income");
+    private final ObservableList<String> expenseCategoryList=FXCollections.observableArrayList("Rent","Food","Bills",
+            "Utilities","Transportation","Insurance","Shopping"
+            ,"Entertainment","Health Care","Housing","Taxes","Clothing","Education","Miscellaneous","Personal Care");
     private int balanceAmount;
-    @FXML private Button dashboardButton;
+    @FXML private Button dashboardButton,addTransactionButton;
     @FXML private AnchorPane AnchorRoot;
     @FXML private Label sideBalanceLabel;
     @FXML private TableView<Transaction> transactionContent;
@@ -56,6 +63,7 @@ public class TransactionsPageController implements Initializable {
             });
         });
         dashboardButton.setOnAction(this::DashboardScene);
+        addTransactionButton.setOnAction(this::showAddTransactionDialog);
         Platform.runLater(()->{
             sideBalanceLabel.setText("$"+balanceAmount);
             String style= """
@@ -202,6 +210,52 @@ public class TransactionsPageController implements Initializable {
             return transactionContent;
 
         };
+    }
+    private void showAddTransactionDialog(ActionEvent event){
+
+
+       try {
+           FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("DailogeBox.fxml"));
+           Parent root=fxmlLoader.load();
+           DialogBoxController dialogBoxController=fxmlLoader.getController();
+
+           Dialog<Void> dialog=new Dialog<>();
+           dialog.setTitle("Add a Transaction");
+           dialog.initModality(Modality.APPLICATION_MODAL);
+           dialog.getDialogPane().setContent(root);
+
+           dialogBoxController.setSelectCategory(incomeCategoryList);
+           dialogBoxController.getIncomeRadioButton().setOnAction(event1 -> {
+               dialogBoxController.setSelectCategory(incomeCategoryList);
+           });
+           dialogBoxController.getExpenseRadioButton().setOnAction(event1 -> {
+               dialogBoxController.setSelectCategory(expenseCategoryList);
+           });
+
+
+
+           Stage stage=(Stage) dialog.getDialogPane().getScene().getWindow();
+           stage.setResizable(false);
+           stage.setX(580);
+           stage.setY(150);
+           stage.setOnCloseRequest(event1-> dialog.close());
+           stage.showAndWait();
+
+
+
+
+
+
+
+       }
+       catch (Exception e){
+           e.printStackTrace();
+       }
+
+
+
+
+
     }
 
 }

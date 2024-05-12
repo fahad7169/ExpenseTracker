@@ -1,0 +1,32 @@
+.AnchorRoot{
+     -fx-background-color: white;
+}
+.CategoryAndAmount{
+    -fx-background-color: white;
+    -fx-border-width: 0 0 0.5 0;
+    -fx-border-style: solid;
+    -fx-border-color: #4d4d4d;
+}
+.Date{
+
+   -fx-background-color: white;
+   -fx-color: white;
+}
+.AddButton{
+
+  -fx-background-color: #4d7cfa;
+}
+.CancelButton{
+       -fx-background-color: white;
+       -fx-text-fill: #4d7cfa;
+      -fx-border-width: 1 1 1 1;
+      -fx-border-style: solid;
+     -fx-border-color: #4d7cfa;
+
+}
+.CancelButton: hover{
+
+     -fx-background-color: #4d7cfa;
+     -fx-text-fill: white;
+
+}
