@@ -17,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Modality;
@@ -143,7 +145,7 @@ public class TransactionsPageController implements Initializable {
 
     }
 
-    private void setTheTransactions(){
+    public void setTheTransactions(){
         alltransactions=FXCollections.observableArrayList();
 
 
@@ -155,7 +157,7 @@ public class TransactionsPageController implements Initializable {
 
             Connection connection=DriverManager.getConnection(url,username,password);
 
-            String query="SELECT * FROM transactions";
+            String query="SELECT * FROM transactions ORDER BY transaction_date DESC";
 
             PreparedStatement preparedStatement=connection.prepareStatement(query);
             ResultSet resultSet=preparedStatement.executeQuery();
@@ -184,7 +186,7 @@ public class TransactionsPageController implements Initializable {
 
     }
 
-    private void setPagination(){
+    public void setPagination(){
 
         int pageCount=(int) Math.ceil((double) alltransactions.size()/ itemsPerPage);
 
@@ -231,17 +233,15 @@ public class TransactionsPageController implements Initializable {
            dialogBoxController.getExpenseRadioButton().setOnAction(event1 -> {
                dialogBoxController.setSelectCategory(expenseCategoryList);
            });
-
+           dialogBoxController.setUseriD(userID);
 
 
            Stage stage=(Stage) dialog.getDialogPane().getScene().getWindow();
            stage.setResizable(false);
            stage.setX(580);
            stage.setY(150);
-           stage.setOnCloseRequest(event1-> dialog.close());
+           stage.setOnCloseRequest(event1-> stage.close());
            stage.showAndWait();
-
-
 
 
 
@@ -253,11 +253,7 @@ public class TransactionsPageController implements Initializable {
        }
 
 
-
-
-
     }
-
 }
 
 
