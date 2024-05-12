@@ -86,7 +86,10 @@ public class DialogBoxController {
                 Connection connection= DriverManager.getConnection(url,username,password);
 
                 LocalDate transactionDate=dateButton.getValue();
-                String formattedDate=transactionDate.format(DateTimeFormatter.ISO_DATE);
+                String formattedDate="";
+                if (transactionDate!=null){
+                    formattedDate=transactionDate.format(DateTimeFormatter.ISO_DATE);
+                }
                 String category=selectCategory.getValue();
                 String paymentMode="";
                 if (cashRadioButton.isSelected()){
@@ -127,6 +130,10 @@ public class DialogBoxController {
                 preparedStatement.close();
                 connection.close();
 
+//
+//                    TransactionsPageController transactionsPageController=new TransactionsPageController();
+//                    transactionsPageController.updatePage(category,formattedDate,paymentMode,description,String.valueOf(amount));
+//
 
                 Stage stage=(Stage) addButton.getScene().getWindow();
                 stage.close();

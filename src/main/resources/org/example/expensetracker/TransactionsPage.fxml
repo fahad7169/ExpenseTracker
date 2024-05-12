@@ -100,7 +100,7 @@
                             <TableColumn fx:id="amountColumn" prefWidth="146.933349609375" text="Amount" />
                         </columns>
                     </TableView>
-                    <Button alignment="CENTER_RIGHT" disable="true" layoutX="641.0" layoutY="9.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: white;" text="Edit" textFill="#615c5c">
+                    <Button fx:id="editButton" alignment="CENTER_RIGHT" disable="true" layoutX="641.0" layoutY="9.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: white;" text="Edit" textFill="#615c5c">
                         <font>
                             <Font size="18.0" />
                         </font>
@@ -115,7 +115,7 @@
                             <Cursor fx:constant="HAND" />
                         </cursor>
                     </Button>
-                    <Button alignment="CENTER_RIGHT" disable="true" layoutX="731.0" layoutY="9.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: white;" text="Delete" textFill="#615c5c">
+                    <Button fx:id="deleteButton" alignment="CENTER_RIGHT" disable="true" layoutX="731.0" layoutY="9.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: white;" text="Delete" textFill="#615c5c">
                         <font>
                             <Font size="18.0" />
                         </font>

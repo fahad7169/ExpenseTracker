@@ -36,8 +36,10 @@ import java.util.ResourceBundle;
 public class TransactionsPageController implements Initializable {
 
     private int userID;
-    private ObservableList<Transaction> alltransactions;
+    private ObservableList<Transaction> alltransactions=FXCollections.observableArrayList();
     private final int itemsPerPage = 13;
+    private boolean wasSelected=false;
+    Transaction selectedItem;
 
     private final ObservableList<String> incomeCategoryList=FXCollections.observableArrayList
             ("Salary","Interests","Business","Extra income");
@@ -45,14 +47,15 @@ public class TransactionsPageController implements Initializable {
             "Utilities","Transportation","Insurance","Shopping"
             ,"Entertainment","Health Care","Housing","Taxes","Clothing","Education","Miscellaneous","Personal Care");
     private int balanceAmount;
-    @FXML private Button dashboardButton,addTransactionButton;
+    @FXML private Button dashboardButton,addTransactionButton,editButton,deleteButton;
     @FXML private AnchorPane AnchorRoot;
     @FXML private Label sideBalanceLabel;
-    @FXML private TableView<Transaction> transactionContent;
+    @FXML private TableView<Transaction> transactionContent=new TableView<>();
     @FXML private TableColumn<Transaction,Boolean>  checkboxColumn;
     @FXML private TableColumn<Transaction,String> categoryColumn,dateColumn,paymentModeColumn,descriptionColumn;
     @FXML private TableColumn<Transaction,String> amountColumn;
-    @FXML private Pagination pagination;
+    @FXML private Pagination pagination=new Pagination();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,8 +85,18 @@ public class TransactionsPageController implements Initializable {
         });
 
         Platform.runLater(()->{
+
             checkboxColumn.setCellFactory(CheckBoxTableCell.forTableColumn(checkboxColumn));
-            checkboxColumn.setCellValueFactory(cellData -> cellData.getValue().selectedProperty());
+            checkboxColumn.setCellValueFactory(cellData->{
+                Transaction transaction = cellData.getValue();
+                BooleanProperty selectedProperty = transaction.selectedProperty();
+
+                selectedProperty.addListener((obs, oldVal, newVal) -> {
+                    // Update the selected state of the transaction
+                    transaction.setSelected(newVal);
+                });
+                 return selectedProperty;
+            });
             categoryColumn.setCellValueFactory(cellData-> cellData.getValue().categoryProperty());
             dateColumn.setCellValueFactory(cellData-> cellData.getValue().dateProperty());
             paymentModeColumn.setCellValueFactory(cellData-> cellData.getValue().paymentModeProperty());
@@ -108,10 +121,53 @@ public class TransactionsPageController implements Initializable {
                     """;
             amountColumn.setStyle(style1);
 
+
             setTheTransactions();
             setPagination();
         });
+        try {
+            transactionContent.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
 
+
+                if (newValue!=null){
+                    Transaction selectedTransaction=newValue;
+                    String category= String.valueOf(selectedTransaction.categoryProperty());
+                    String date=String.valueOf(selectedTransaction.dateProperty());
+                    String paymentMode=String.valueOf(selectedTransaction.paymentModeProperty());
+                    String description=String.valueOf(selectedTransaction.descriptionProperty());
+                    String amount=String.valueOf(selectedTransaction.amountProperty());
+                    System.out.println(category.substring(23,category.length()-1)+" "+date.substring(23,date.length()-1)+
+                            " "+paymentMode.substring(23,paymentMode.length()-1)+" "+description.substring(23,description.length()-1)+
+                            " "+amount.substring(23,amount.length()-1));
+
+                }
+
+
+
+            }));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        transactionContent.setOnMouseClicked(event -> {
+            if (event.getClickCount() >= 1) {
+                if (wasSelected && selectedItem != null && selectedItem.equals(transactionContent.getSelectionModel().getSelectedItem())) {
+                    transactionContent.getSelectionModel().clearSelection();
+                    wasSelected = false;
+                    editButton.setDisable(true);
+                    deleteButton.setDisable(true);
+                    System.out.println("1");
+                }
+                else {
+                    editButton.setDisable(false);
+                    deleteButton.setDisable(false);
+                    wasSelected = true;
+                    System.out.println("3");
+                }
+                selectedItem = transactionContent.getSelectionModel().getSelectedItem();
+            }
+        });
 
 
 
@@ -254,16 +310,30 @@ public class TransactionsPageController implements Initializable {
 
 
     }
+//    public void updatePage(String category,String date,String paymentMode,String description,String amount){
+//       Platform.runLater(()->{
+//           try {
+//               alltransactions.add(new Transaction(false,category,date,paymentMode,description,amount));
+//
+//               transactionContent.refresh();
+//           }
+//           catch (Exception e){
+//               e.printStackTrace();
+//           }
+//
+//       });
+//
+//    }
 }
 
 
 class Transaction {
-    private final BooleanProperty selected;
-    private final StringProperty category;
-    private final StringProperty date;
-    private final StringProperty paymentMode;
-    private final StringProperty description;
-    private final StringProperty amount;
+    private BooleanProperty selected;
+    private StringProperty category;
+    private StringProperty date;
+    private StringProperty paymentMode;
+    private StringProperty description;
+    private StringProperty amount;
 
     public Transaction(boolean selected, String category, String date, String paymentMode, String description, String amount) {
         this.selected = new SimpleBooleanProperty(selected);
@@ -296,5 +366,8 @@ class Transaction {
 
     public StringProperty amountProperty() {
         return amount;
+    }
+    public void setSelected(Boolean v){
+        this.selected=new SimpleBooleanProperty(v);
     }
 }
