@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="528.0" styleClass="AnchorRoot" stylesheets="@DailogeBox.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.DialogBoxController">
+<AnchorPane fx:id="AnchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="528.0" styleClass="AnchorRoot" stylesheets="@DailogeBox.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.EditBoxController">
    <children>
-      <Label layoutX="21.0" layoutY="22.0" text="New Transaction">
+      <Label layoutX="21.0" layoutY="22.0" text="Edit Transaction">
          <font>
             <Font size="24.0" />
          </font>
@@ -84,7 +84,7 @@
             <Color red="0.3019607961177826" green="0.48627451062202454" blue="0.9803921580314636" />
          </selectedColor>
       </JFXRadioButton>
-      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="343.0" layoutY="488.0" onAction="#addTransaction" prefHeight="27.0" prefWidth="53.0" styleClass="AddButton" text="ADD" textFill="WHITE">
+      <JFXButton fx:id="saveButton" buttonType="RAISED" layoutX="343.0" layoutY="488.0" onAction="#saveTransaction" prefHeight="27.0" prefWidth="53.0" styleClass="AddButton" text="Save" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

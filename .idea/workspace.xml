@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Boom! User can now add a transaction">
+    <list default="true" id="52ae14c7-0d79-4148-a112-4a3bdb441b2e" name="Changes" comment="Finally! I can select rows">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/EditBoxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/expensetracker/EditBox.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DialogBoxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/DialogBoxController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/TransactionsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/expensetracker/TransactionsPageController.java" afterDir="false" />
@@ -19,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -63,7 +65,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fahad/Downloads/mysql-connector-j-8.3.0.jar",
+    "last_opened_file_path": "C:/Users/fahad/Downloads/jar_files/jfoenix-21.0.0.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -180,8 +182,27 @@
       <option name="project" value="LOCAL" />
       <updated>1715506437628</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Finally! I can select rows">
+      <option name="closed" value="true" />
+      <created>1715534393841</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715534393841</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -194,6 +215,7 @@
     <MESSAGE value="Dashboard is completely ready" />
     <MESSAGE value="User can see his/her transactions on the transaction page" />
     <MESSAGE value="Boom! User can now add a transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boom! User can now add a transaction" />
+    <MESSAGE value="Finally! I can select rows" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally! I can select rows" />
   </component>
 </project>

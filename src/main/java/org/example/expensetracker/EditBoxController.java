@@ -3,25 +3,41 @@ package org.example.expensetracker;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class DialogBoxController {
-
+public class EditBoxController implements Initializable {
     @FXML private RadioButton incomeRadioButton,expenseRadioButton,cashRadioButton,creditCardRadioButton,debitCardRadioButton;
     @FXML private DatePicker dateButton;
     @FXML private ComboBox<String> selectCategory;
     @FXML private TextField amountField,descriptionField;
-    @FXML private Button addButton,cancelButton;
+    @FXML private Button saveButton,cancelButton;
+    @FXML private AnchorPane AnchorRoot;
     private int userID;
+    String category, date,paymentMode,description,amount;
+    ObservableList<String> incomeCategoryList,expenseCategoryList;
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+        Platform.runLater(()->{
+            AnchorRoot.getScene().getRoot().requestFocus();
+            saveButton.getParent().requestFocus();
+        });
+
+    }
 
     public RadioButton getIncomeRadioButton(){
         return incomeRadioButton;
@@ -30,6 +46,7 @@ public class DialogBoxController {
         return  expenseRadioButton;
     }
     public void setSelectCategory(ObservableList<String> list){
+
         selectCategory.setItems(list);
     }
     public void setUseriD(int userID){
@@ -46,8 +63,57 @@ public class DialogBoxController {
         Stage stage=(Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-    public void addTransaction(){
+    public void setVariables(String category,String date,String paymentMode,String description,String amount
+            ,ObservableList<String> incomeCategoryList,ObservableList<String> expenseCategoryList){
+        this.category=category;
+        this.date=date;
+        this.paymentMode=paymentMode;
+        this.description=description;
+        this.amount=amount;
+        this.incomeCategoryList=incomeCategoryList;
+        this.expenseCategoryList=expenseCategoryList;
+    }
+    public void setData(){
+        Platform.runLater(()->{
+            selectCategory.setValue(category);
 
+
+            LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            dateButton.setValue(localDate);
+            for (String list: incomeCategoryList){
+                if (list.equals(category)){
+                    incomeRadioButton.setSelected(true);
+                    break;
+                }
+            }
+            for (String list:expenseCategoryList){
+                if (list.equals(category)){
+                    expenseRadioButton.setSelected(true);
+                    break;
+                }
+            }
+
+
+
+            if (paymentMode.equals("Cash")){
+                cashRadioButton.setSelected(true);
+            }
+            else if (paymentMode.equals("Debit card")){
+                debitCardRadioButton.setSelected(true);
+            }
+            else {
+                creditCardRadioButton.setSelected(true);
+            }
+
+
+            descriptionField.setText(description);
+            amountField.setText(amount);
+
+        });
+
+
+    }
+    public void saveTransaction(){
         Platform.runLater(()->{
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -84,12 +150,11 @@ public class DialogBoxController {
                 int amount=Integer.parseInt(amountField.getText());
 
 
-                String query=
-                """
-                        INSERT INTO transactions(category,cashflow,payment_mode,description,amount,transaction_date)
-                        VALUES(?,?,?,?,?,?)
-                        """
-                                ;
+                String query = """
+                       UPDATE transactions
+                       SET category=?, cashflow=?, payment_mode=?, description=?, amount=?, transaction_date=?
+                       WHERE description=? AND category=? AND payment_mode=? amount=?
+                       """;
                 PreparedStatement preparedStatement=connection.prepareStatement(query);
                 preparedStatement.setString(1,category);
                 preparedStatement.setString(2,cashflow);
@@ -97,6 +162,9 @@ public class DialogBoxController {
                 preparedStatement.setString(4,description);
                 preparedStatement.setInt(5,amount);
                 preparedStatement.setString(6,formattedDate);
+                preparedStatement.setString(7,this.description);
+                preparedStatement.setString(8,this.category);
+                preparedStatement.setString(9,this.paymentMode);
                 preparedStatement.executeUpdate();
 
                 preparedStatement.close();
@@ -107,18 +175,19 @@ public class DialogBoxController {
 //                    transactionsPageController.updatePage(category,formattedDate,paymentMode,description,String.valueOf(amount));
 
 
-                Stage stage=(Stage) addButton.getScene().getWindow();
+                Stage stage=(Stage) saveButton.getScene().getWindow();
                 stage.close();
 
 
 
             }
             catch (Exception e){
-                  e.printStackTrace();
+                e.printStackTrace();
             }
         });
 
+
     }
 
-}
 
+}

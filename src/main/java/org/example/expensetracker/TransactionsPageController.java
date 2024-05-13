@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
@@ -39,7 +40,8 @@ public class TransactionsPageController implements Initializable {
     private ObservableList<Transaction> alltransactions=FXCollections.observableArrayList();
     private final int itemsPerPage = 13;
     private boolean wasSelected=false;
-    Transaction selectedItem;
+    private Transaction selectedItem;
+    private String category,date,paymentMode,description,amount;
 
     private final ObservableList<String> incomeCategoryList=FXCollections.observableArrayList
             ("Salary","Interests","Business","Extra income");
@@ -69,6 +71,7 @@ public class TransactionsPageController implements Initializable {
         });
         dashboardButton.setOnAction(this::DashboardScene);
         addTransactionButton.setOnAction(this::showAddTransactionDialog);
+        editButton.setOnAction(this::showEditDialogBox);
         Platform.runLater(()->{
             sideBalanceLabel.setText("$"+balanceAmount);
             String style= """
@@ -131,14 +134,14 @@ public class TransactionsPageController implements Initializable {
 
                 if (newValue!=null){
                     Transaction selectedTransaction=newValue;
-                    String category= String.valueOf(selectedTransaction.categoryProperty());
-                    String date=String.valueOf(selectedTransaction.dateProperty());
-                    String paymentMode=String.valueOf(selectedTransaction.paymentModeProperty());
-                    String description=String.valueOf(selectedTransaction.descriptionProperty());
-                    String amount=String.valueOf(selectedTransaction.amountProperty());
-                    System.out.println(category.substring(23,category.length()-1)+" "+date.substring(23,date.length()-1)+
-                            " "+paymentMode.substring(23,paymentMode.length()-1)+" "+description.substring(23,description.length()-1)+
-                            " "+amount.substring(23,amount.length()-1));
+                    category= selectedTransaction.categoryProperty().get();
+                    date=selectedTransaction.dateProperty().get();
+                    paymentMode=selectedTransaction.paymentModeProperty().get();
+                    description=selectedTransaction.descriptionProperty().get();
+                    amount=selectedTransaction.amountProperty().get();
+                    System.out.println(category+" "+date+
+                            " "+paymentMode+" "+description+
+                            " "+amount);
 
                 }
 
@@ -157,13 +160,13 @@ public class TransactionsPageController implements Initializable {
                     wasSelected = false;
                     editButton.setDisable(true);
                     deleteButton.setDisable(true);
-                    System.out.println("1");
+//                    System.out.println("1");
                 }
                 else {
                     editButton.setDisable(false);
                     deleteButton.setDisable(false);
                     wasSelected = true;
-                    System.out.println("3");
+//                    System.out.println("2");
                 }
                 selectedItem = transactionContent.getSelectionModel().getSelectedItem();
             }
@@ -310,12 +313,70 @@ public class TransactionsPageController implements Initializable {
 
 
     }
+    private void showEditDialogBox(ActionEvent event){
+
+
+        try {
+            FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("EditBox.fxml"));
+            Parent root=fxmlLoader.load();
+            EditBoxController editBoxController=fxmlLoader.getController();
+
+
+            Dialog<Void> dialog=new Dialog<>();
+            dialog.setTitle("Edit Transaction");
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.getDialogPane().setContent(root);
+
+
+            editBoxController.setUseriD(userID);
+            editBoxController.setVariables(category,date,paymentMode,
+                    description,amount.substring(1),incomeCategoryList,expenseCategoryList);
+            editBoxController.setData();
+            for (String list: incomeCategoryList){
+                if (list.equals(category)){
+                    editBoxController.setSelectCategory(incomeCategoryList);
+                    break;
+                }
+            }
+            for (String list:expenseCategoryList){
+                if (list.equals(category)){
+                   editBoxController.setSelectCategory(expenseCategoryList);
+                   break;
+                }
+            }
+
+            editBoxController.getIncomeRadioButton().setOnAction(event1 -> {
+                editBoxController.setSelectCategory(incomeCategoryList);
+            });
+            editBoxController.getExpenseRadioButton().setOnAction(event1 -> {
+                editBoxController.setSelectCategory(expenseCategoryList);
+            });
+
+
+            Stage stage=(Stage) dialog.getDialogPane().getScene().getWindow();
+            stage.setResizable(false);
+            stage.setX(580);
+            stage.setY(150);
+            stage.setOnCloseRequest(event1-> stage.close());
+            stage.showAndWait();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+    }
+
 //    public void updatePage(String category,String date,String paymentMode,String description,String amount){
 //       Platform.runLater(()->{
 //           try {
 //               alltransactions.add(new Transaction(false,category,date,paymentMode,description,amount));
 //
-//               transactionContent.refresh();
+//              setPagination();
 //           }
 //           catch (Exception e){
 //               e.printStackTrace();
