@@ -153,7 +153,7 @@ public class EditBoxController implements Initializable {
                 String query = """
                        UPDATE transactions
                        SET category=?, cashflow=?, payment_mode=?, description=?, amount=?, transaction_date=?
-                       WHERE description=? AND category=? AND payment_mode=? amount=?
+                       WHERE description=? AND category=? AND payment_mode=?
                        """;
                 PreparedStatement preparedStatement=connection.prepareStatement(query);
                 preparedStatement.setString(1,category);

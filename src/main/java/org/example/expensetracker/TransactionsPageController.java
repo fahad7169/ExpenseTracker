@@ -72,6 +72,7 @@ public class TransactionsPageController implements Initializable {
         dashboardButton.setOnAction(this::DashboardScene);
         addTransactionButton.setOnAction(this::showAddTransactionDialog);
         editButton.setOnAction(this::showEditDialogBox);
+        deleteButton.setOnAction(this::deleteTransaction);
         Platform.runLater(()->{
             sideBalanceLabel.setText("$"+balanceAmount);
             String style= """
@@ -171,7 +172,12 @@ public class TransactionsPageController implements Initializable {
                 selectedItem = transactionContent.getSelectionModel().getSelectedItem();
             }
         });
-
+        AnchorRoot.setOnMouseClicked(event -> {
+            System.out.println("1");
+            if (transactionContent.getSelectionModel()!=null){
+                transactionContent.getSelectionModel().clearSelection();
+            }
+        });
 
 
 
@@ -367,7 +373,51 @@ public class TransactionsPageController implements Initializable {
 
 
 
+    }
 
+    public void deleteTransaction(ActionEvent event){
+
+
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Transaction");
+        alert.setContentText("Are you sure you want to delete this transaction? ");
+
+
+        if (alert.showAndWait().get()==ButtonType.OK){
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                String url="jdbc:mysql://localhost:3306/user"+userID;
+                String username="root";
+                String password="";
+
+                Connection connection= DriverManager.getConnection(url,username,password);
+
+                String query=
+                        """
+                        DELETE FROM transactions
+                        WHERE description=? AND category=? AND payment_mode=?
+                        """;
+
+                PreparedStatement preparedStatement= connection.prepareStatement(query);
+                preparedStatement.setString(1,this.description);
+                preparedStatement.setString(2,this.category);
+                preparedStatement.setString(3,this.paymentMode);
+                preparedStatement.executeUpdate();
+
+                preparedStatement.close();
+                connection.close();
+
+                alert.close();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
+
+        }
 
     }
 
