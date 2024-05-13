@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -71,19 +72,11 @@
                     <Font name="Arial" size="18.0" />
                 </font>
             </Label>
-            <TextField layoutX="181.0" layoutY="92.0" prefHeight="33.0" prefWidth="674.0" promptText="Search" styleClass="RemainingPanes">
+            <TextField fx:id="searchField" layoutX="181.0" layoutY="92.0" prefHeight="33.0" prefWidth="674.0" promptText="Search" styleClass="RemainingPanes">
                 <font>
                     <Font name="Arial" size="17.0" />
                 </font>
             </TextField>
-            <Button fx:id="addTransactionButton" layoutX="863.0" layoutY="92.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="187.0" styleClass="AddTransaction" text="ADD TRANSACTION" textFill="WHITE">
-                <font>
-                    <Font name="Arial" size="17.0" />
-                </font>
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor>
-            </Button>
             <Pane layoutX="181.0" layoutY="137.0" prefHeight="600.0" prefWidth="849.0" styleClass="RemainingPanes">
                 <children>
                     <TableView fx:id="transactionContent" layoutX="1.0" layoutY="57.0" prefHeight="548.0" prefWidth="848.0">
@@ -134,5 +127,13 @@
                     <Pagination fx:id="pagination" layoutX="18.0" layoutY="382.0" maxPageIndicatorCount="30" pageCount="100" prefHeight="200.0" prefWidth="816.0" />
                 </children>
             </Pane>
+      <JFXButton fx:id="addTransactionButton" buttonType="RAISED" layoutX="863.0" layoutY="92.0" prefHeight="24.0" prefWidth="187.0" styleClass="AddTransaction" text="ADD TRANSACTION" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
         </children>
     </AnchorPane>

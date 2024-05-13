@@ -3,17 +3,22 @@ package org.example.expensetracker;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class DialogBoxController {
+public class DialogBoxController implements Initializable {
 
+    @FXML private AnchorPane AnchorRoot;
     @FXML private RadioButton incomeRadioButton,expenseRadioButton,cashRadioButton,creditCardRadioButton,debitCardRadioButton;
     @FXML private DatePicker dateButton;
     @FXML private ComboBox<String> selectCategory;
@@ -21,7 +26,13 @@ public class DialogBoxController {
     @FXML private Button addButton,cancelButton;
     private int userID;
 
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(()->{
+            AnchorRoot.getScene().getRoot().requestFocus();
+            addButton.getParent().requestFocus();
+        });
+    }
 
     public RadioButton getIncomeRadioButton(){
         return incomeRadioButton;
@@ -58,11 +69,14 @@ public class DialogBoxController {
                 Connection connection= DriverManager.getConnection(url,username,password);
 
                 LocalDate transactionDate=dateButton.getValue();
-                String formattedDate="";
+                String formattedDate=null;
                 if (transactionDate!=null){
                     formattedDate=transactionDate.format(DateTimeFormatter.ISO_DATE);
                 }
-                String category=selectCategory.getValue();
+                String category=null;
+                if (selectCategory.getValue()!=null){
+                    category=selectCategory.getValue();
+                }
                 String paymentMode="";
                 if (cashRadioButton.isSelected()){
                     paymentMode="Cash";
@@ -80,8 +94,18 @@ public class DialogBoxController {
                 else if (expenseRadioButton.isSelected()){
                     cashflow="Expense";
                 }
-                String description=descriptionField.getText();
-                int amount=Integer.parseInt(amountField.getText());
+                String description="";
+                if (descriptionField.getText()!=null){
+                    description=descriptionField.getText();
+                }
+
+                String amount=amountField.getText();
+                int amount1=0;
+                if (!amount.isEmpty()){
+                    amount1=Integer.parseInt(amount);
+                }
+
+
 
 
                 String query=
@@ -95,20 +119,21 @@ public class DialogBoxController {
                 preparedStatement.setString(2,cashflow);
                 preparedStatement.setString(3,paymentMode);
                 preparedStatement.setString(4,description);
-                preparedStatement.setInt(5,amount);
+                preparedStatement.setInt(5, amount1);
                 preparedStatement.setString(6,formattedDate);
-                preparedStatement.executeUpdate();
+                if (category!=null && transactionDate!=null && amount1>0){
+                    preparedStatement.executeUpdate();
+                    Stage stage=(Stage) addButton.getScene().getWindow();
+                    stage.close();
+
+                }
+
 
                 preparedStatement.close();
                 connection.close();
 
 
-//                    TransactionsPageController transactionsPageController=new TransactionsPageController();
-//                    transactionsPageController.updatePage(category,formattedDate,paymentMode,description,String.valueOf(amount));
 
-
-                Stage stage=(Stage) addButton.getScene().getWindow();
-                stage.close();
 
 
 

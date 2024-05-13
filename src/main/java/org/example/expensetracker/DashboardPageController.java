@@ -484,5 +484,8 @@ public class DashboardPageController implements Initializable {
 
 
     }
+    public void setUserId(int userID){
+        this.userID=userID;
+    }
 
 }

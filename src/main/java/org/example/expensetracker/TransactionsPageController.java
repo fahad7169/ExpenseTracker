@@ -188,6 +188,9 @@ public class TransactionsPageController implements Initializable {
         this.balanceAmount=balanceAmount;
         this.userID=userID;
     }
+    public void setUserID(int userID){
+        this.userID=userID;
+    }
     private void DashboardScene(ActionEvent event){
 
             try {
@@ -421,20 +424,6 @@ public class TransactionsPageController implements Initializable {
 
     }
 
-//    public void updatePage(String category,String date,String paymentMode,String description,String amount){
-//       Platform.runLater(()->{
-//           try {
-//               alltransactions.add(new Transaction(false,category,date,paymentMode,description,amount));
-//
-//              setPagination();
-//           }
-//           catch (Exception e){
-//               e.printStackTrace();
-//           }
-//
-//       });
-//
-//    }
 }
 
 

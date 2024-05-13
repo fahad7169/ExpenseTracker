@@ -124,11 +124,14 @@ public class EditBoxController implements Initializable {
                 Connection connection= DriverManager.getConnection(url,username,password);
 
                 LocalDate transactionDate=dateButton.getValue();
-                String formattedDate="";
+                String formattedDate=null;
                 if (transactionDate!=null){
                     formattedDate=transactionDate.format(DateTimeFormatter.ISO_DATE);
                 }
-                String category=selectCategory.getValue();
+                String category=null;
+                if (selectCategory.getValue()!=null){
+                    category=selectCategory.getValue();
+                }
                 String paymentMode="";
                 if (cashRadioButton.isSelected()){
                     paymentMode="Cash";
@@ -146,9 +149,16 @@ public class EditBoxController implements Initializable {
                 else if (expenseRadioButton.isSelected()){
                     cashflow="Expense";
                 }
-                String description=descriptionField.getText();
-                int amount=Integer.parseInt(amountField.getText());
+                String description="";
+                if (descriptionField.getText()!=null){
+                    description=descriptionField.getText();
+                }
 
+                String amount=amountField.getText();
+                int amount1=0;
+                if (!amount.isEmpty()){
+                    amount1=Integer.parseInt(amount);
+                }
 
                 String query = """
                        UPDATE transactions
@@ -160,23 +170,22 @@ public class EditBoxController implements Initializable {
                 preparedStatement.setString(2,cashflow);
                 preparedStatement.setString(3,paymentMode);
                 preparedStatement.setString(4,description);
-                preparedStatement.setInt(5,amount);
+                preparedStatement.setInt(5,amount1);
                 preparedStatement.setString(6,formattedDate);
                 preparedStatement.setString(7,this.description);
                 preparedStatement.setString(8,this.category);
                 preparedStatement.setString(9,this.paymentMode);
-                preparedStatement.executeUpdate();
+
+
+                if (category!=null && transactionDate!=null && amount1>0){
+                    preparedStatement.executeUpdate();
+                    Stage stage=(Stage) saveButton.getScene().getWindow();
+                    stage.close();
+
+                }
 
                 preparedStatement.close();
                 connection.close();
-
-
-//                    TransactionsPageController transactionsPageController=new TransactionsPageController();
-//                    transactionsPageController.updatePage(category,formattedDate,paymentMode,description,String.valueOf(amount));
-
-
-                Stage stage=(Stage) saveButton.getScene().getWindow();
-                stage.close();
 
 
 
